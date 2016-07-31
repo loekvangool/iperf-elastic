@@ -19,7 +19,7 @@ filebeat.prospectors:
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - /Users/loek/Dropbox/macbook/source/iperf-elastic/*.out
+    - <path from which run.sh will run>*.out
     #- c:\programdata\elasticsearch\logs\*
 
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
