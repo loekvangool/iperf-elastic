@@ -1,0 +1,267 @@
+PUT _template/iperf3
+{
+  "template": "iperf3-*",
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "log": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "keyword"
+        },
+        "beat": {
+          "properties": {
+            "hostname": {
+              "type": "keyword"
+            },
+            "name": {
+              "type": "keyword"
+            }
+          }
+        },
+        "end": {
+          "properties": {
+            "cpu_utilization_percent": {
+              "properties": {
+                "host_system": {
+                  "type": "float"
+                },
+                "host_total": {
+                  "type": "float"
+                },
+                "host_user": {
+                  "type": "float"
+                },
+                "remote_system": {
+                  "type": "float"
+                },
+                "remote_total": {
+                  "type": "float"
+                },
+                "remote_user": {
+                  "type": "float"
+                }
+              }
+            },
+            "streams": {
+              "properties": {
+                "receiver": {
+                  "properties": {
+                    "bits_per_second": {
+                      "type": "float"
+                    },
+                    "bytes": {
+                      "type": "float"
+                    },
+                    "end": {
+                      "type": "float"
+                    },
+                    "seconds": {
+                      "type": "float"
+                    },
+                    "socket": {
+                      "type": "long"
+                    },
+                    "start": {
+                      "type": "long"
+                    }
+                  }
+                },
+                "sender": {
+                  "properties": {
+                    "bits_per_second": {
+                      "type": "float"
+                    },
+                    "bytes": {
+                      "type": "long"
+                    },
+                    "end": {
+                      "type": "float"
+                    },
+                    "max_rtt": {
+                      "type": "long"
+                    },
+                    "max_snd_cwnd": {
+                      "type": "long"
+                    },
+                    "mean_rtt": {
+                      "type": "long"
+                    },
+                    "min_rtt": {
+                      "type": "long"
+                    },
+                    "retransmits": {
+                      "type": "long"
+                    },
+                    "seconds": {
+                      "type": "float"
+                    },
+                    "socket": {
+                      "type": "long"
+                    },
+                    "start": {
+                      "type": "long"
+                    }
+                  }
+                }
+              }
+            },
+            "sum_received": {
+              "properties": {
+                "bits_per_second": {
+                  "type": "float"
+                },
+                "bytes": {
+                  "type": "float"
+                },
+                "end": {
+                  "type": "float"
+                },
+                "seconds": {
+                  "type": "float"
+                },
+                "start": {
+                  "type": "long"
+                }
+              }
+            },
+            "sum_sent": {
+              "properties": {
+                "bits_per_second": {
+                  "type": "float"
+                },
+                "bytes_per_second": {
+                  "type": "float"
+                },
+                "bytes": {
+                  "type": "long"
+                },
+                "end": {
+                  "type": "float"
+                },
+                "retransmits": {
+                  "type": "long"
+                },
+                "seconds": {
+                  "type": "float"
+                },
+                "start": {
+                  "type": "long"
+                }
+              }
+            }
+          }
+        },
+        "error": {
+          "type": "keyword"
+        },
+        "host": {
+          "type": "keyword"
+        },
+        "input_type": {
+          "type": "keyword"
+        },
+        "offset": {
+          "type": "long"
+        },
+        "source": {
+          "type": "keyword"
+        },
+        "start": {
+          "properties": {
+            "connected": {
+              "properties": {
+                "local_host": {
+                  "type": "ip"
+                },
+                "local_port": {
+                  "type": "long"
+                },
+                "remote_host": {
+                  "type": "ip"
+                },
+                "remote_port": {
+                  "type": "long"
+                },
+                "socket": {
+                  "type": "long"
+                }
+              }
+            },
+            "connecting_to": {
+              "properties": {
+                "host": {
+                  "type": "keyword"
+                },
+                "port": {
+                  "type": "long"
+                }
+              }
+            },
+            "cookie": {
+              "type": "keyword"
+            },
+            "system_info": {
+              "type": "keyword"
+            },
+            "tcp_mss_default": {
+              "type": "long"
+            },
+            "test_start": {
+              "properties": {
+                "blksize": {
+                  "type": "long"
+                },
+                "blocks": {
+                  "type": "long"
+                },
+                "bytes": {
+                  "type": "long"
+                },
+                "duration": {
+                  "type": "long"
+                },
+                "num_streams": {
+                  "type": "long"
+                },
+                "omit": {
+                  "type": "long"
+                },
+                "protocol": {
+                  "type": "keyword"
+                },
+                "reverse": {
+                  "type": "long"
+                }
+              }
+            },
+            "timestamp": {
+              "properties": {
+                "time": {
+                  "type": "date",
+                  "format": "EEE, dd MMM YYYY HH:mm:ss z"
+                },
+                "timesecs": {
+                  "type": "long"
+                }
+              }
+            },
+            "version": {
+              "type": "keyword"
+            }
+          }
+        },
+        "tags": {
+          "type": "keyword"
+        },
+        "type": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

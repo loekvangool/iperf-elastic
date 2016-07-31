@@ -1,0 +1,139 @@
+[
+  {
+    "_id": "iperf",
+    "_type": "dashboard",
+    "_source": {
+      "title": "iperf",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"iperf-Download-Metrics\",\"panelIndex\":1,\"row\":3,\"size_x\":5,\"size_y\":1,\"type\":\"visualization\"},{\"col\":1,\"id\":\"iperf-Upload-Metrics\",\"panelIndex\":2,\"row\":4,\"size_x\":5,\"size_y\":1,\"type\":\"visualization\"},{\"col\":6,\"id\":\"iperf-Download-Speed-History\",\"panelIndex\":3,\"row\":3,\"size_x\":4,\"size_y\":3,\"type\":\"visualization\"},{\"col\":10,\"id\":\"iperf-Upload-Speed-History\",\"panelIndex\":4,\"row\":3,\"size_x\":3,\"size_y\":3,\"type\":\"visualization\"},{\"col\":1,\"id\":\"iperf-Server-Hosts\",\"panelIndex\":5,\"row\":5,\"size_x\":5,\"size_y\":5,\"type\":\"visualization\"},{\"col\":6,\"id\":\"iperf-Last-10\",\"panelIndex\":6,\"row\":6,\"size_x\":7,\"size_y\":5,\"type\":\"visualization\"},{\"id\":\"iperf-Network-speed-timelion\",\"type\":\"visualization\",\"panelIndex\":7,\"size_x\":12,\"size_y\":2,\"col\":1,\"row\":1}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-3\":{\"vis\":{\"legendOpen\":false}},\"P-4\":{\"vis\":{\"legendOpen\":false}},\"P-6\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":0,\"direction\":null}}}}}",
+      "version": 1,
+      "timeRestore": true,
+      "timeTo": "now",
+      "timeFrom": "now-4h",
+      "refreshInterval": {
+        "display": "30 seconds",
+        "pause": false,
+        "section": 1,
+        "value": 30000
+      },
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  }
+  {
+    "_id": "iperf-Download-Speed-History",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Download Speed History",
+      "visState": "{\"title\":\"iperf Download Speed History\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"overlap\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.bytes_per_second\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"start.timestamp.time\",\"interval\":\"h\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"query\":\"test:download\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Upload-Speed-History",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Upload Speed History",
+      "visState": "{\"title\":\"iperf Upload Speed History\",\"type\":\"area\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"smoothLines\":false,\"scale\":\"linear\",\"interpolate\":\"linear\",\"mode\":\"overlap\",\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.bytes_per_second\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"start.timestamp.time\",\"interval\":\"h\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"query\":\"test:download\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Server-Hosts",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Server Hosts",
+      "visState": "{\"title\":\"iperf Server Hosts\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"isDonut\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"start.connecting_to.host\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Metrics",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Metrics",
+      "visState": "{\"title\":\"iperf Metrics\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":60},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.bits_per_second\",\"customLabel\":\"Average bitrate\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"query\":\"test:upload\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Last-10",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Last 10",
+      "visState": "{\"title\":\"iperf Last 10\",\"type\":\"table\",\"params\":{\"perPage\":10,\"showMeticsAtAllLevels\":false,\"showPartialRows\":false,\"showTotal\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"start.timestamp.time\",\"size\":10,\"orderAgg\":{\"id\":\"2-orderAgg\",\"enabled\":true,\"type\":\"max\",\"schema\":\"orderAgg\",\"params\":{\"field\":\"start.timestamp.time\"}},\"order\":\"desc\",\"orderBy\":\"custom\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.bytes_per_second\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.seconds\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"test.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":0,\"direction\":null}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Download-Metrics",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Download Metrics",
+      "visState": "{\"title\":\"iperf Download Metrics\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"30\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.bytes_per_second\",\"customLabel\":\"Average download per second\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"test:download\"}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Upload-Metrics",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Upload Metrics",
+      "visState": "{\"title\":\"iperf Upload Metrics\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"30\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"end.sum_received.bytes_per_second\",\"customLabel\":\"Average upload per second\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"iperf3-*\",\"query\":{\"query_string\":{\"query\":\"test:upload\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "iperf-Network-speed-timelion",
+    "_type": "visualization",
+    "_source": {
+      "title": "iperf Network speed timelion",
+      "visState": "{\"title\":\"iperf Network speed timelion\",\"type\":\"timelion\",\"params\":{\"expression\":\".es(index=\\\"iperf3-*\\\", q=\\\"test:upload\\\", metric=avg:end.sum_received.bits_per_second).movingaverage(position=left, window=10).divide(1048576).label(\\\"Moving average of upload speed in mbit/s\\\").color(\\\"navy\\\").lines(fill=1,width=2), .es(index=\\\"iperf3-*\\\", q=\\\"test:upload\\\", metric=avg:end.sum_received.bits_per_second).divide(1048576).label(\\\"Download speed in mbit/s\\\").color(\\\"#757AFF\\\").points(radius=5, fill=5), .es(index=\\\"iperf3-*\\\", q=\\\"test:download\\\", metric=avg:end.sum_received.bits_per_second).movingaverage(position=left, window=10).divide(1048576).label(\\\"Moving average of download speed in mbit/s\\\").color(\\\"#FAC5E2\\\").lines(fill=1,width=2), .es(index=\\\"iperf3-*\\\", q=\\\"test:download\\\", metric=avg:end.sum_received.bits_per_second).divide(1048576).label(\\\"Upload speed in mbit/s\\\").color(\\\"#FF75BF\\\").points(radius=5, fill=5)\",\"interval\":\"10m\"},\"aggs\":[],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[]}"
+      }
+    }
+  }
+]
